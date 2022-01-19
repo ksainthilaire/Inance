@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WelcomeActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="0"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/orange_yellow_crayola"
+        android:paddingStart="72dp"
+        android:paddingEnd="72dp"
+        android:text="Votre compte a été crée "
+        android:textSize="32dp" />
+
+    <LinearLayout
+        android:layout_marginBottom="150dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Accéder à mon compte" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

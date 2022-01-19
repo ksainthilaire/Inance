@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="Vérifier votre numéro de téléphone"
+        android:textColor="@color/orange_yellow_crayola"
+        android:textSize="32dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:padding="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Votre numéro de téléphone"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/orange_yellow_crayola"
+            ></TextView>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_input"
+            android:padding="20dp"
+            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textSize="23dp"></EditText>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Envoyer le code"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/orange_yellow_crayola"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageButton
+            android:src="@drawable/ic_check"
+            android:layout_gravity="center"
+            app:backgroundTint="@null"
+            android:background="@drawable/circle_background"
+            android:layout_width="140dp"
+            android:layout_height="140dp"></ImageButton>
+
+
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_button"
+            android:padding="20dp"
+            android:text="Suivant" />
+
+
+    </LinearLayout>
+</LinearLayout>

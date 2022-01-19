@@ -6,6 +6,11 @@
     <color name="viridian_green">#0fa3b1</color>
     <color name="midnight_green_eagle">#084c61</color>
     <color name="claret">#820933</color>
+    <color name="old_lace">#FEFDF8</color>
+
+    <color name="quarter_pearl_lusta">#FFFDF6</color>
+    <color name="early_dawn">#FFFAE9</color>
+    <color name="dawn">#FFF7E0 </color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

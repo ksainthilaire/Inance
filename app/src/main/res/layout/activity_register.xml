@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="Créer un nouveau compte"
+        android:textColor="@color/orange_yellow_crayola"
+        android:textSize="32dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:src="@drawable/ic_apple"
+            android:margin="10dp"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_button"
+            ></ImageButton>
+
+        <ImageButton
+            android:src="@drawable/ic_google"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_button"
+            ></ImageButton>
+
+        <ImageButton
+            android:src="@drawable/ic_facebook"
+            app:backgroundTint="@null"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_button"
+            ></ImageButton>
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom compte"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/orange_yellow_crayola"
+            ></TextView>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_input"
+            android:padding="20dp"
+            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textSize="23dp"></EditText>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adresse e-mail"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/orange_yellow_crayola"
+            ></TextView>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_input"
+            android:padding="20dp"
+            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textSize="23dp"></EditText>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mot de passe"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/orange_yellow_crayola"
+            ></TextView>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_input"
+            android:padding="20dp"
+            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textSize="23dp"></EditText>
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_button"
+            android:padding="20dp"
+            android:text="Suivant" />
+
+
+    </LinearLayout>
+</LinearLayout>

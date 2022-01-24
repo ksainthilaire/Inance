@@ -8,13 +8,18 @@ import android.widget.ImageButton
 import android.widget.EditText
 import android.widget.TextView
 import android.content.Intent
+import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var firebaseAuth: FirebaseAuth;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        firebaseAuth = FirebaseAuth.getInstance()
 
        val fingerprintButton = findViewById<ImageButton>(R.id.fingerprint_button)
 
@@ -39,6 +44,23 @@ class LoginActivity : AppCompatActivity() {
 
 
         this.createToast("Hello World")
+    }
+
+    private fun isAlreadyLogged() {
+        if (firebaseAuth.currentUser != null) {
+            // Already logged
+        }
+    }
+
+    private fun firebaseLogin(mail: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(mail, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                } else {
+                    Log.d("firebaseLogin()", "failed")
+                }
+            }
     }
 
     private fun createLogin() {

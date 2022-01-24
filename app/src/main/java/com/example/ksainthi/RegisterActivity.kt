@@ -11,42 +11,50 @@ import com.facebook.CallbackManager
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.GoogleAuthProvider
 
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth;
+    private lateinit var firebaseAuth: FirebaseAuth;
 
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var googleSignIn: ActivityResultLauncher<Intent>
 
+    companion object {
+        private const val CLIENT_ID = "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val loginManager    = LoginManager.getInstance()
-        val callbackManager = CallbackManager.Factory.create()
-
-
-        auth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
 
         this.gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(CLIENT_ID)
             .requestEmail()
             .build();
         this.mGoogleSignInClient = GoogleSignIn.getClient(this, this.gso);
         this.googleSignIn = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
 
                     if (result.resultCode == RESULT_OK) {
+
+
                         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                        val taskResult = task.getResult()
-                        val account = taskResult.getAccount()
+                        val taskResult: GoogleSignInAccount = task.getResult()
+                        this.firebaseAuthWithGoogleAccount(taskResult)
                   }
 
             }
+
+
 
         val apple_button    = findViewById<ImageButton>(R.id.apple_button)
         val facebook_button = findViewById<ImageButton>(R.id.facebook_button)
@@ -67,8 +75,41 @@ class RegisterActivity : AppCompatActivity() {
             val passwordInput  = passwordInput.text.toString()
 
             this.onError("Hello World")
-            this.onSubmit(usernameValue, mailValue, passwordInput)
+            this.firebaseRegister(mailValue, passwordInput)
         }
+    }
+
+    private fun firebaseRegister(mail: String, password: String) {
+        firebaseAuth.createUserWithEmailAndPassword(mail, password)
+            .addOnCompleteListener { authResult ->
+                if (authResult.isSuccessful()) {
+                    Log.d("Firebase", "Authentification réussi ! ")
+                } else {
+                    Log.d("Firebase", "ok test ${mail} ${password}")
+                    Log.d("Firebase error_code", (authResult.getException().toString()))
+                }
+            }
+
+    }
+
+
+    private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount) {
+            val idToken = account.idToken
+            this.onError("Le token est " + idToken)
+
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnSuccessListener { authResult ->
+                Log.d("Firebase", "Ok success")
+
+                if (authResult.additionalUserInfo!!.isNewUser) {
+                    Log.d("Firebas", "Nouvel utilisateur")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.d("Firebase", "Logs  ${e.message}")
+            }
+
     }
 
     private fun onError(text: String) {
@@ -84,7 +125,7 @@ class RegisterActivity : AppCompatActivity() {
         val signInIntent = mGoogleSignInClient.getSignInIntent()
         googleSignIn.launch(signInIntent)
     }
-    
+
     private fun onFacebookSubmit() {
 
     }

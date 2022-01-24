@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ForgotActivity">
 
 
     <TextView
@@ -28,7 +28,6 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/register_button"
             android:background="@drawable/primary_rounded_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -37,7 +36,6 @@
             android:text="Créer un compte" />
 
         <TextView
-            android:id="@+id/login_button"
             android:textStyle="bold"
             android:textColor="@color/orange_yellow_crayola"
             android:layout_marginTop="10dp"

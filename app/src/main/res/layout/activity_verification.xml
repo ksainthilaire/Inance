@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
             android:padding="20dp"
-            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
         <TextView
             android:layout_marginTop="10dp"
@@ -75,7 +75,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/rounded_button"
+            android:background="@drawable/primary_rounded_button"
             android:padding="20dp"
             android:text="Suivant" />
 

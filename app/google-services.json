@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "133201850085",
+    "project_id": "inance-1642804205130",
+    "storage_bucket": "inance-1642804205130.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133201850085:android:8f21abdbba1867c9e5ee0c",
+        "android_client_info": {
+          "package_name": "com.example.ksainthi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133201850085-v1gupqqpbtunj7ehhm1ggacsm7g8vfo7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ksainthi",
+            "certificate_hash": "431958cd4f704d1ec218447b199a4a0d61bf3d64"
+          }
+        },
+        {
+          "client_id": "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqGh17F7deF3f8inZ4RJOpk08fkHaYSYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

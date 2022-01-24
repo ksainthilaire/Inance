@@ -10,12 +10,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0"
         android:gravity="center"
         android:text="Créer un nouveau compte"
         android:textColor="@color/orange_yellow_crayola"
-        android:textSize="32dp"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -26,8 +26,9 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/apple_button"
             android:src="@drawable/ic_apple"
-            android:margin="10dp"
+
             app:backgroundTint="@null"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -35,14 +36,17 @@
             ></ImageButton>
 
         <ImageButton
+            android:id="@+id/google_button"
             android:src="@drawable/ic_google"
             app:backgroundTint="@null"
+            android:layout_margin="10dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_button"
             ></ImageButton>
 
         <ImageButton
+            android:id="@+id/facebook_button"
             android:src="@drawable/ic_facebook"
             app:backgroundTint="@null"
             android:layout_width="100dp"
@@ -68,11 +72,13 @@
 
 
         <EditText
+            android:id="@+id/username"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
             android:padding="20dp"
-            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
 
 
@@ -89,11 +95,13 @@
 
 
         <EditText
+            android:id="@+id/mail"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
             android:padding="20dp"
-            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
 
 
@@ -110,19 +118,22 @@
 
 
         <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
             android:padding="20dp"
-            android:text-ColorHint="@color/orange_yellow_crayola"
+            android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
 
         <Button
+            android:id="@+id/submit_button"
             android:layout_gravity="center"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/rounded_button"
+            android:background="@drawable/primary_rounded_button"
             android:padding="20dp"
             android:text="Suivant" />
 

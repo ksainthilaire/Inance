@@ -10,9 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_weight="0"
         android:gravity="center"
+        android:layout_marginTop="10dp"
 
         android:text="Connectez-vous à votre compte"
         android:textColor="@color/orange_yellow_crayola"
@@ -20,6 +20,7 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -30,6 +31,7 @@
         android:paddingRight="20dp">
 
         <EditText
+            android:id="@+id/mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
@@ -40,7 +42,9 @@
             android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
 
+
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -52,8 +56,8 @@
             android:textColorHint="@color/orange_yellow_crayola"
             android:textSize="23dp"></EditText>
 
-
         <TextView
+            android:id="@+id/forgot_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -63,10 +67,11 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/login_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_button"
+            android:background="@drawable/primary_rounded_button"
             android:padding="20dp"
             android:text="Se connecter" />
 
@@ -95,13 +100,13 @@
         android:paddingRight="20dp">
 
 
-
         <ImageButton
-            android:src="@drawable/ic_fingerprint"
-            app:backgroundTint="@null"
+            android:id="@+id/fingerprint_button"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:background="@drawable/circle_shape"></ImageButton>
+            android:background="@drawable/circle_shape"
+            android:src="@drawable/ic_fingerprint"
+            app:backgroundTint="@null"></ImageButton>
     </LinearLayout>
 
 

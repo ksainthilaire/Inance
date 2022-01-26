@@ -7,7 +7,11 @@ import android.util.Log
 import android.widget.ImageButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import com.facebook.login.Login
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -21,8 +25,14 @@ class AuthActivity : AppCompatActivity() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var googleSignIn: ActivityResultLauncher<Intent>
 
+    private var currentFragment: Int = AuthActivity.REGISTER_FRAGMENT
+
 
     companion object {
+
+        const val REGISTER_FRAGMENT = 0
+        const val LOGIN_FRAGMENT    = 1
+
         private const val CLIENT_ID =
             "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
     }
@@ -31,21 +41,41 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
+        val params = getIntent().getExtras()
+
+        if (params != null) {
+            this.currentFragment = params.getInt("fragmentToDisplay")
+        }
+
         this.gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(RegisterActivity.CLIENT_ID)
+            .requestIdToken(AuthActivity.CLIENT_ID)
             .requestEmail()
             .build();
         this.mGoogleSignInClient = GoogleSignIn.getClient(this, this.gso);
-
+        this.googleSignIn = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result -> this.authWithGoogle(result)
+        }
 
         firebaseAuth = FirebaseAuth.getInstance()
 
         this.checkIfUserAlreadyLogged()
+        this.loadFragment()
+    }
 
-        findViewById<ImageButton>(R.id.fingerprint_button)
-            .setOnClickListener {
-                this.loginWithFingerprint()
+    private fun loadFragment() {
+        var fragment: Fragment = RegisterFragment()
+
+        when (this.currentFragment) {
+            LOGIN_FRAGMENT -> {
+                fragment = LoginFragment()
             }
+
+        }
+
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container_view, fragment)
+        transaction.disallowAddToBackStack()
+        transaction.commit()
     }
 
     private fun checkIfUserAlreadyLogged() {
@@ -54,7 +84,7 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerWithCredentials(mail: String, password: String) {
+  fun registerWithCredentials(mail: String, password: String) {
         firebaseAuth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener { authResult ->
                 if (authResult.isSuccessful()) {
@@ -66,6 +96,11 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
+    fun launchGoogleSignIn() {
+        val signInIntent = mGoogleSignInClient.getSignInIntent()
+        googleSignIn.launch(signInIntent)
+    }
+
     private fun authWithGoogle(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data);
@@ -74,7 +109,7 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun firebaseAuthWithGoogleAccount(account: GoogleSignInClient) {
+    private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount) {
 
         val idToken = account.idToken
 
@@ -95,19 +130,18 @@ class AuthActivity : AppCompatActivity() {
     }
 
 
-    private fun loginWithCredentials(mail: String, password: String) {
+    fun loginWithCredentials(mail: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
-                if (task.isSuccesfull) {
+                if (task.isSuccessful()) {
                     val user = firebaseAuth.currentUser
                     // L'utilisateur viens de s'authentifier
                 } else {
 
                 }
             }
+ 
 
 
-        private fun loginWithFingerPrint() {
-
-        }
     }
+}

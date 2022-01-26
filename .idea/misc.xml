@@ -22,6 +22,7 @@
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/rounded_button.xml" value="0.40546875" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/shape_circle.xml" value="0.23378378378378378" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/white_rect_background.xml" value="0.23378378378378378" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_auth.xml" value="0.1547933157431838" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_forgot.xml" value="0.1" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_login.xml" value="0.264" />
@@ -33,6 +34,9 @@
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_transaction.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_verification.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_welcome.xml" value="0.2301801801801802" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_register.xml" value="0.1547933157431838" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_register_second_step.xml" value="0.11936936936936937" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/mipmap-anydpi-v26/ic_digits.xml" value="0.14144144144144144" />
       </map>
     </option>

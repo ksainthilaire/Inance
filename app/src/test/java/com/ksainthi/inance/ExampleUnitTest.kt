@@ -1,4 +1,4 @@
-package com.example.ksainthi
+package com.ksainthi.inance
 
 import org.junit.Test
 

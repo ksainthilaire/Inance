@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ksainthi">
+    package="com.ksainthi.inance">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ksainthi">
         <activity
-            android:name=".AuthActivity"
+            android:name="com.ksainthi.inance.AuthActivity"
             android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
@@ -22,7 +22,7 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.ksainthi.inance.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

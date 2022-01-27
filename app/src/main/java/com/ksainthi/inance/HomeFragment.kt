@@ -1,4 +1,4 @@
-package com.example.ksainthi
+package com.ksainthi.inance
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -32,6 +32,8 @@ class AuthActivity : AppCompatActivity() {
 
         const val REGISTER_FRAGMENT = 0
         const val LOGIN_FRAGMENT    = 1
+        const val HOME_FRAGMENT     = 2
+        const val WELCOME_FRAGMENT  = 3
 
         private const val CLIENT_ID =
             "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
@@ -43,9 +45,8 @@ class AuthActivity : AppCompatActivity() {
 
         val params = getIntent().getExtras()
 
-        if (params != null) {
-            this.currentFragment = params.getInt("fragmentToDisplay")
-        }
+        val fragmentId = params?.getInt("fragmentToDisplay")
+
 
         this.gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(AuthActivity.CLIENT_ID)
@@ -59,22 +60,43 @@ class AuthActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         this.checkIfUserAlreadyLogged()
-        this.loadFragment()
+        this.loadFragment(fragmentId)
     }
 
-    private fun loadFragment() {
-        var fragment: Fragment = RegisterFragment()
+    override fun onBackPressed() {
 
-        when (this.currentFragment) {
+        Log.d("DEBUG", "count" + getSupportFragmentManager().getBackStackEntryCount().toString())
+
+       if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+           getSupportFragmentManager().popBackStack()
+       }
+    }
+
+    fun loadFragment(fragmentId: Int?) {
+        var fragment: Fragment = HomeFragment()
+        Log.d("DEBUG", "count" + getSupportFragmentManager().getBackStackEntryCount().toString())
+
+        when (fragmentId) {
+            HOME_FRAGMENT -> {
+                fragment = HomeFragment()
+            }
             LOGIN_FRAGMENT -> {
                 fragment = LoginFragment()
             }
-
+            REGISTER_FRAGMENT -> {
+                fragment = RegisterFragment()
+            }
+            WELCOME_FRAGMENT -> {
+                fragment = WelcomeFragment()
+            }
         }
 
+
         val transaction = supportFragmentManager.beginTransaction()
+
         transaction.replace(R.id.fragment_container_view, fragment)
-        transaction.disallowAddToBackStack()
+    //    transaction.disallowAddToBackStack()
+        transaction.addToBackStack(null)
         transaction.commit()
     }
 

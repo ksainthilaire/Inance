@@ -20,17 +20,10 @@ class RegisterFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_register, container, false)
 
 
-        val apple_button = rootView.findViewById<ImageButton>(R.id.apple_button)
-        val facebook_button = rootView.findViewById<ImageButton>(R.id.facebook_button)
-        val google_button = rootView.findViewById<ImageButton>(R.id.google_button)
-
-        google_button.setOnClickListener {
-            parentActivity.launchGoogleSignIn()
-        }
-
         val username = rootView.findViewById<EditText>(R.id.username)
         var mail = rootView.findViewById<EditText>(R.id.mail)
         var password = rootView.findViewById<EditText>(R.id.password)
+        val passwordConfirmation = rootView.findViewById<EditText>(R.id.password_confirmation)
         var submit  = rootView.findViewById<Button>(R.id.submit_button)
 
         submit.setOnClickListener {

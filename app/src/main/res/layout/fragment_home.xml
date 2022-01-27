@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_weight="0"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/orange_yellow_crayola"
+        android:paddingStart="72dp"
+        android:paddingEnd="72dp"
+        android:text="Garder le contrôle de votre argent"
+        android:textSize="32dp" />
+
+    <LinearLayout
+        android:layout_marginBottom="150dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/register_button"
+            android:background="@drawable/primary_rounded_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Créer un compte" />
+
+        <Button
+            android:id="@+id/google_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/primary_borded_button"
+            android:drawableLeft="@drawable/ic_google"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Continuer avec Google"
+            android:textColor="@color/orange_yellow_crayola"
+            app:backgroundTint="@null" />
+
+        <Button
+            app:backgroundTint="@null"
+            android:layout_marginTop="20dp"
+            android:id="@+id/facebook_button"
+            android:background="@drawable/primary_borded_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/orange_yellow_crayola"
+            android:text="Continuer avec facebook"
+            android:drawableLeft="@drawable/ic_facebook"/>
+
+        <TextView
+            android:id="@+id/login_button"
+            android:textStyle="bold"
+            android:textColor="@color/orange_yellow_crayola"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Se connecter" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 
 class LoginFragment : Fragment() {
 
@@ -22,8 +21,8 @@ class LoginFragment : Fragment() {
         val mail = rootView.findViewById<EditText>(R.id.mail)
         val password = rootView.findViewById<EditText>(R.id.password)
 
-        val login_button = rootView.findViewById<Button>(R.id.login_button)
-        login_button.setOnClickListener {
+        val loginButton = rootView.findViewById<Button>(R.id.login_button)
+        loginButton.setOnClickListener {
             parentActivity.loginWithCredentials(
                 mail.text.toString(),
                 password.text.toString()

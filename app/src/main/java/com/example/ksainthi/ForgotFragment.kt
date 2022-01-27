@@ -9,7 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 
-class MobileVerification : Fragment() {
+
+class ForgotFragment : Fragment() {
 
     private lateinit var rootView: View
 
@@ -17,23 +18,20 @@ class MobileVerification : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        this.rootView = inflater.inflate(R.layout.fragment_forgot, container, false)
 
-        this.rootView = inflater.inflate(R.layout.fragment_mobile_verification, container, false)
-
-
-
-        val numberPhone = this.rootView.findViewById<EditText>(R.id.number_phone)
-        val sendCodeButton = rootView.findViewById<TextView>(R.id.send_code_button)
+        val mail = this.rootView.findViewById<EditText>(R.id.mail)
+        val sendCodeButton = this.rootView.findViewById<TextView>(R.id.send_code_button)
         sendCodeButton.setOnClickListener {
 
         }
 
-        val submit_button = rootView.findViewById<Button>(R.id.submit_button)
+        val submit_button = this.rootView.findViewById<Button>(R.id.submit_button)
         submit_button.setOnClickListener {
             val digits = this.getDigits()
         }
 
-        return rootView
+        return this.rootView
     }
 
     private fun concatenate(vararg string: String?): String {

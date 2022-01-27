@@ -21,10 +21,10 @@ class RegisterFragment : Fragment() {
 
 
         val username = rootView.findViewById<EditText>(R.id.username)
-        var mail = rootView.findViewById<EditText>(R.id.mail)
-        var password = rootView.findViewById<EditText>(R.id.password)
+        val mail = rootView.findViewById<EditText>(R.id.mail)
+        val password = rootView.findViewById<EditText>(R.id.password)
         val passwordConfirmation = rootView.findViewById<EditText>(R.id.password_confirmation)
-        var submit  = rootView.findViewById<Button>(R.id.submit_button)
+        val submit  = rootView.findViewById<Button>(R.id.submit_button)
 
         submit.setOnClickListener {
             parentActivity.registerWithCredentials(

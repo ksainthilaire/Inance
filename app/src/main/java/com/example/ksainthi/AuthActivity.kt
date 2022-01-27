@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,13 +18,13 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class AuthActivity : AppCompatActivity() {
 
-    private lateinit var firebaseAuth: FirebaseAuth;
+    private lateinit var firebaseAuth: FirebaseAuth
 
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var googleSignIn: ActivityResultLauncher<Intent>
 
-    private var currentFragment: Int = AuthActivity.REGISTER_FRAGMENT
+    private var currentFragment: Int = REGISTER_FRAGMENT
 
 
     companion object {
@@ -49,10 +48,10 @@ class AuthActivity : AppCompatActivity() {
 
 
         this.gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(AuthActivity.CLIENT_ID)
+            .requestIdToken(CLIENT_ID)
             .requestEmail()
-            .build();
-        this.mGoogleSignInClient = GoogleSignIn.getClient(this, this.gso);
+            .build()
+        this.mGoogleSignInClient = GoogleSignIn.getClient(this, this.gso)
         this.googleSignIn = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             result -> this.authWithGoogle(result)
         }
@@ -125,16 +124,13 @@ class AuthActivity : AppCompatActivity() {
 
     private fun authWithGoogle(result: ActivityResult) {
         if (result.resultCode == RESULT_OK) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data);
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             val taskResult = task.getResult()
             this.firebaseAuthWithGoogleAccount(taskResult)
         }
     }
 
     private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount) {
-
-        val idToken = account.idToken
-
 
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential)

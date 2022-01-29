@@ -10,8 +10,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(applicationContext)
-        this.displayAuthWithFragment(AuthActivity.HOME_FRAGMENT)
-        //setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
+        this.showFragment()
+    //this.displayAuthWithFragment(AuthActivity.HOME_FRAGMENT)
 
         /*
         val register_button = findViewById<Button>(R.id.register_button)
@@ -23,6 +24,15 @@ class MainActivity : AppCompatActivity() {
         submit_button.setOnClickListener {
            this.displayAuthWithFragment(AuthActivity.LOGIN_FRAGMENT)
         }*/
+    }
+
+    private fun showFragment () {
+        val transaction = supportFragmentManager.beginTransaction()
+
+        transaction.replace(R.id.fragment_container_view, ProfileFragment())
+        //    transaction.disallowAddToBackStack()
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     private fun displayAuthWithFragment(fragment: Int) {

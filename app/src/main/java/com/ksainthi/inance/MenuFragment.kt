@@ -32,7 +32,8 @@ class MenuFragment : Fragment() {
         walletTab.setOnClickListener { }
         profileTab.setOnClickListener { }
 
-        this.activeTab()
+
+        //this.activeTab()
 
         return rootView
     }

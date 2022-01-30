@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#F0F0F0F0"
+    android:background="@android:color/transparent"
     tools:context=".MenuFragment">
 
 
     <LinearLayout
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
@@ -22,59 +23,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="20dp"
             android:layout_marginBottom="-50dp"
-            android:background="@drawable/ic_groupe_57"
+            android:background="@drawable/round_button"
             android:src="@drawable/ic_plus"
             android:translationZ="1dp" />
 
         <LinearLayout
-            android:background="@drawable/menu_background"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/menu_background"
             android:orientation="horizontal"
-            android:paddingTop="5dp"
             android:paddingStart="20dp"
+            android:paddingTop="15dp"
             android:paddingEnd="20dp">
 
             <ImageButton
 
                 android:id="@+id/home_tab"
-                android:layout_margin="10dp"
-                android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_home" />
 
 
             <ImageButton
                 android:id="@+id/stats_tab"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="40dp"
-                android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_stats" />
 
 
             <ImageButton
                 android:id="@+id/wallet_tab"
 
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="10dp"
-                android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_wallet" />
 
 
             <ImageButton
                 android:id="@+id/profile_tab"
-                android:layout_margin="10dp"
-                android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_profile" />
 
 

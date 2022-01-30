@@ -3,6 +3,7 @@ package com.ksainthi.inance
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
 
 
@@ -11,26 +12,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(applicationContext)
         setContentView(R.layout.activity_main)
-        this.showFragment()
+
+        this.displayFragment(R.id.fragment_container_view, ProfileFragment())
+        this.displayMenu()
     //this.displayAuthWithFragment(AuthActivity.HOME_FRAGMENT)
-
-        /*
-        val register_button = findViewById<Button>(R.id.register_button)
-        register_button.setOnClickListener {
-            this.displayAuthWithFragment(AuthActivity.REGISTER_FRAGMENT)
-        }
-
-        val submit_button = findViewById<TextView>(R.id.login_button)
-        submit_button.setOnClickListener {
-           this.displayAuthWithFragment(AuthActivity.LOGIN_FRAGMENT)
-        }*/
     }
 
-    private fun showFragment () {
+    private fun displayMenu() {
+        this.displayFragment(R.id.fragment_menu, MenuFragment())
+    }
+
+
+    private fun displayFragment(containerViewId: Int, fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
 
-        transaction.replace(R.id.fragment_container_view, ProfileFragment())
-        //    transaction.disallowAddToBackStack()
+        transaction.replace(containerViewId, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -41,8 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         bundle.putInt("fragmentToDisplay", fragment)
         authActivity.putExtras(bundle)
-
-
         startActivity(authActivity)
     }
 }

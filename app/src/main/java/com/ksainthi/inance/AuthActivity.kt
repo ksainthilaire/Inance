@@ -17,29 +17,31 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class AuthActivity : AppCompatActivity() {
 
-    private lateinit var firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
 
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var googleSignIn: ActivityResultLauncher<Intent>
 
-    private var currentFragment: Int = REGISTER_FRAGMENT
+
 
 
     companion object {
-
-        const val REGISTER_FRAGMENT = 0
-        const val LOGIN_FRAGMENT    = 1
-        const val HOME_FRAGMENT     = 2
-        const val WELCOME_FRAGMENT  = 3
-
-        private const val CLIENT_ID =
-            "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
+        val REGISTER_FRAGMENT = 0
+        val LOGIN_FRAGMENT = 1
+        val HOME_FRAGMENT = 2
+        val WELCOME_FRAGMENT = 3
     }
+    private val CLIENT_ID =
+        "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+
 
         val params = getIntent().getExtras()
 
@@ -51,13 +53,11 @@ class AuthActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         this.mGoogleSignInClient = GoogleSignIn.getClient(this, this.gso)
-        this.googleSignIn = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            result -> this.authWithGoogle(result)
-        }
+        this.googleSignIn =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                this.authWithGoogle(result)
+            }
 
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        this.checkIfUserAlreadyLogged()
         this.loadFragment(fragmentId)
     }
 
@@ -65,9 +65,9 @@ class AuthActivity : AppCompatActivity() {
 
         Log.d("DEBUG", "count" + getSupportFragmentManager().getBackStackEntryCount().toString())
 
-       if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-           getSupportFragmentManager().popBackStack()
-       }
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack()
+        }
     }
 
     fun loadFragment(fragmentId: Int?) {
@@ -93,19 +93,20 @@ class AuthActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.replace(R.id.fragment_container_view, fragment)
-    //    transaction.disallowAddToBackStack()
+        //    transaction.disallowAddToBackStack()
         transaction.addToBackStack(null)
         transaction.commit()
     }
 
-    private fun checkIfUserAlreadyLogged() {
-        if (firebaseAuth.currentUser != null) {
-            // L'utilisateur est déjà connecté
+    fun checkIfUserAlreadyLogged(): Boolean {
+        if (this.firebaseAuth.currentUser != null) {
+            return true
         }
+        return false
     }
 
-  fun registerWithCredentials(mail: String, password: String) {
-        firebaseAuth.createUserWithEmailAndPassword(mail, password)
+    fun registerWithCredentials(mail: String, password: String) {
+        this.firebaseAuth.createUserWithEmailAndPassword(mail, password)
             .addOnCompleteListener { authResult ->
                 if (authResult.isSuccessful()) {
                     // Authentification réussi
@@ -132,7 +133,7 @@ class AuthActivity : AppCompatActivity() {
     private fun firebaseAuthWithGoogleAccount(account: GoogleSignInAccount) {
 
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        firebaseAuth.signInWithCredential(credential)
+        this.firebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener { authResult ->
                 Log.d("Firebase", "Ok success")
 
@@ -148,16 +149,15 @@ class AuthActivity : AppCompatActivity() {
 
 
     fun loginWithCredentials(mail: String, password: String) {
-        firebaseAuth.signInWithEmailAndPassword(mail, password)
+        this.firebaseAuth.signInWithEmailAndPassword(mail, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful()) {
-                    val user = firebaseAuth.currentUser
+                    val user = this.firebaseAuth.currentUser
                     // L'utilisateur viens de s'authentifier
                 } else {
 
                 }
             }
- 
 
 
     }

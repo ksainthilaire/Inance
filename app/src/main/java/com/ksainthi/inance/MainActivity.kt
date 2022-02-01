@@ -13,9 +13,17 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         setContentView(R.layout.activity_main)
 
+
+        if (AuthActivity.checkIfUserAlreadyLogged()) {
+            return this.displayAuthWithFragment(AuthActivity.HOME_FRAGMENT)
+        }
+
         this.displayFragment(R.id.fragment_container_view, ProfileFragment())
         this.displayMenu()
-    //this.displayAuthWithFragment(AuthActivity.HOME_FRAGMENT)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
     }
 
     private fun displayMenu() {

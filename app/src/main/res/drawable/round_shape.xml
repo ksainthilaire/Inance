@@ -1,9 +1,88 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="140dp"
-    android:height="140dp"
-    android:viewportWidth="140"
-    android:viewportHeight="140">
-  <path
-      android:pathData="M70,0A70,70 0,1 1,0 70,70 70,0 0,1 70,0Z"
-      android:fillColor="#fffae9"/>
-</vector>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="110dp"
+    android:height="110dp"
+    android:viewportWidth="110"
+    android:viewportHeight="110">
+
+
+
+
+
+
+  <!-- Drop Shadow Stack -->
+  <item>
+    <shape android:shape="oval">
+      <padding
+          android:bottom="2dp"
+         
+         
+         />
+
+      <solid android:color="#22D9E0E3" />
+
+    </shape>
+  </item>
+  <item>
+    <shape android:shape="oval">
+      <padding
+          android:bottom="2dp"></padding>
+
+
+
+
+      <solid android:color="#10CCCCCC" />
+
+
+    </shape>
+  </item>
+  <item>
+    <shape android:shape="oval">
+      <padding
+          android:bottom="2dp"></padding>
+
+
+
+
+      <solid android:color="#20CCCCCC" />
+
+
+    </shape>
+  </item>
+  <item>
+    <shape android:shape="oval">
+      <padding
+          android:bottom="2dp"></padding>
+
+
+
+
+      <solid android:color="#30CCCCCC" />
+
+
+    </shape>
+  </item>
+  <item>
+    <shape android:shape="oval">
+      <padding
+          android:bottom="2dp"
+
+
+          />
+
+      <solid android:color="#50CCCCCC" />
+
+
+    </shape>
+  </item>
+
+  <!-- Background -->
+  <item>
+    <shape android:shape="oval">
+      <solid android:color="@android:color/white" />
+
+    </shape>
+  </item>
+
+
+
+</layer-list>

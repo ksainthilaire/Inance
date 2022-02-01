@@ -120,8 +120,9 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:textSize="20dp"
             android:background="@drawable/primary_rounded_button"
-            android:padding="20dp"
+            android:padding="5dp"
             android:text="Suivant" />
 
 

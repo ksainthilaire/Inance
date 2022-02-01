@@ -1,100 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F7F7"
-    android:orientation="vertical"
     tools:context=".ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F3F3F3"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_back"
-            app:backgroundTint="@null" />
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Réglages"
-            android:textColor="@color/black"
-            android:textSize="30dp" />
-
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/primary_rounded_button"
-            android:text="Sauvegarder"
-            app:backgroundTint="@color/midnight_green_eagle"></Button>
-
-    </LinearLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="#F9F7F7"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            android:background="#F3F3F3"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="20dp">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@drawable/avatar_background" />
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_back"
+                app:backgroundTint="@null" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-
-                android:text="KSH"
+                android:text="Réglages"
+                android:textColor="@color/black"
                 android:textSize="30dp" />
-        </RelativeLayout>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/primary_rounded_button"
+                android:text="Sauvegarder"
+                android:textSize="12dp"
+                app:backgroundTint="@color/midnight_green_eagle"></Button>
+
+        </LinearLayout>
 
 
-        <ImageButton
-            android:id="@+id/upload_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/round_shape"
-            android:padding="10dp"
-            android:src="@drawable/ic_pencil"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></ImageButton>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/avatar_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:text="KSH"
+                    android:textSize="30dp" />
+            </RelativeLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/upload_button"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_shape"
+                android:padding="20dp"
+                android:src="@drawable/ic_pencil"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"></ImageButton>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -304,6 +306,6 @@
 
 
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

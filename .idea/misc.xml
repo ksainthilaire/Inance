@@ -30,7 +30,7 @@
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/rectangle_button.xml" value="0.23378378378378378" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/red_rect_background.xml" value="0.23378378378378378" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/round_button.xml" value="0.23378378378378378" />
-        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/round_shape.xml" value="0.23378378378378378" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/round_shape.xml" value="0.152" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/rounded_button.xml" value="0.40546875" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/shape_circle.xml" value="0.23378378378378378" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/drawable/white_rect_background.xml" value="0.23378378378378378" />
@@ -43,6 +43,7 @@
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_register2.xml" value="0.11261261261261261" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_settings.xml" value="0.21981981981981982" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_splash.xml" value="0.16261261261261262" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_transaction.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_verification.xml" value="0.21981981981981982" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/activity_welcome.xml" value="0.2301801801801802" />
@@ -51,7 +52,7 @@
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_menu.xml" value="0.264" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_mobile_verification.xml" value="0.2558795860771402" />
-        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_register.xml" value="0.1547933157431838" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_register_second_step.xml" value="0.11936936936936937" />
         <entry key="..\:/Users/ksain/AndroidStudioProjects/ksainthi/app/src/main/res/layout/fragment_reset_password.xml" value="0.12252252252252252" />

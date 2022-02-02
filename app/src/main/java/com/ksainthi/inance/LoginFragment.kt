@@ -23,7 +23,7 @@ class LoginFragment : Fragment() {
 
         val loginButton = rootView.findViewById<Button>(R.id.login_button)
         loginButton.setOnClickListener {
-            parentActivity.loginWithCredentials(
+            AuthHelper.loginWithCredentials(
                 mail.text.toString(),
                 password.text.toString()
             )

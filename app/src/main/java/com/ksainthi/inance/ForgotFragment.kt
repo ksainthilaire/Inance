@@ -26,8 +26,8 @@ class ForgotFragment : Fragment() {
 
         }
 
-        val submit_button = this.rootView.findViewById<Button>(R.id.submit_button)
-        submit_button.setOnClickListener {
+        val submitButton = this.rootView.findViewById<Button>(R.id.submit_button)
+        submitButton.setOnClickListener {
             val digits = this.getDigits()
         }
 

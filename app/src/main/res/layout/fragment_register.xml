@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nom compte"
+            android:text="Nom complet"
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_marginBottom="15dp"
@@ -37,7 +37,7 @@
 
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/full_name"
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

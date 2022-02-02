@@ -18,21 +18,20 @@ class HomeFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
         val parentActivity: AuthActivity = (activity as AuthActivity)
 
-        val google_button = rootView.findViewById<Button>(R.id.google_button)
+        val googleButton = rootView.findViewById<Button>(R.id.google_button)
 
-        google_button.setOnClickListener {
-            parentActivity.launchGoogleSignIn()
+        googleButton.setOnClickListener {
+            AuthHelper.loginWithGoogle()
         }
 
-
-        val register_button = rootView.findViewById<Button>(R.id.register_button)
-        register_button.setOnClickListener {
-            parentActivity.loadFragment(AuthActivity.REGISTER_FRAGMENT)
+        val registerButton = rootView.findViewById<Button>(R.id.register_button)
+        registerButton.setOnClickListener {
+            parentActivity.loadFragment(parentActivity.REGISTER_FRAGMENT)
         }
 
-        val submit_button = rootView.findViewById<TextView>(R.id.login_button)
-        submit_button.setOnClickListener {
-           parentActivity.loadFragment(AuthActivity.LOGIN_FRAGMENT)
+        val submitButton = rootView.findViewById<TextView>(R.id.login_button)
+        submitButton.setOnClickListener {
+           parentActivity.loadFragment(parentActivity.LOGIN_FRAGMENT)
         }
 
         return rootView

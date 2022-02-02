@@ -17,7 +17,7 @@
         android:textColor="@color/orange_yellow_crayola"
         android:paddingStart="72dp"
         android:paddingEnd="72dp"
-        android:text="Garder le contrôle de votre argent"
+        android:text="Gardez le contrôle de votre argent"
         android:textSize="32dp" />
 
     <LinearLayout

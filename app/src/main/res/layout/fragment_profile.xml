@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".ProfileFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F9F7F7"
-        android:orientation="vertical">
+    android:background="#F9F7F7"
+    android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +20,8 @@
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/none"
                 android:background="@drawable/ic_back"
                 app:backgroundTint="@null" />
 
@@ -32,19 +29,19 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Réglages"
+                android:text="@string/profile_title"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:background="@drawable/primary_rounded_button"
-                android:text="Sauvegarder"
-                android:textSize="12dp"
-                app:backgroundTint="@color/midnight_green_eagle"></Button>
+                android:text="@string/topbar_save_button"
+                android:textSize="12sp"
+                app:backgroundTint="@color/midnight_green_eagle" />
 
         </LinearLayout>
 
@@ -68,6 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:contentDescription="@string/none"
                     android:background="@drawable/avatar_background" />
 
                 <TextView
@@ -76,12 +74,13 @@
                     android:layout_centerInParent="true"
 
                     android:text="KSH"
-                    android:textSize="30dp" />
+                    android:textSize="30sp" />
             </RelativeLayout>
 
 
             <ImageButton
                 android:id="@+id/upload_button"
+                android:contentDescription="@string/none"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -91,7 +90,7 @@
                 app:backgroundTint="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"></ImageButton>
+                app:layout_constraintStart_toStartOf="parent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -111,10 +110,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Mon profil"
-                    android:textSize="20dp" />
+                    android:text="@string/profile_me_subtitle"
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -126,24 +125,26 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
                         android:orientation="horizontal"
-                        android:paddingRight="20dp">
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="15dp"
-                            android:text="Nom de compte"
+                            android:text="@string/profile_username_label"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="right"
+                            android:gravity="end"
+                            android:autofillHints="username"
                             android:text="ksainthi"
                             android:textColor="@color/black"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
 
@@ -151,36 +152,42 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="15dp"
-                            android:text="Nom complet"
+                            android:text="@string/profile_fullname_label"
                             android:textStyle="bold" />
 
                         <EditText
+                            android:inputType="text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:hint="ksainthi"
-                            android:paddingLeft="0dp"
+                            android:autofillHints="name"
+                            android:paddingStart="0dp"
                             android:paddingTop="0dp"
-                            android:paddingRight="20dp"
+                            android:paddingEnd="20dp"
                             android:paddingBottom="0dp"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -188,23 +195,25 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="14dp"
-                            android:text="E-mail"
+                            android:text="@string/profile_mail_label"
                             android:textStyle="bold" />
 
                         <EditText
+                            android:inputType="text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:hint="ksainthi@gmail.com"
-                            android:paddingLeft="0dp"
+                            android:autofillHints="emailAddress"
+                            android:paddingStart="0dp"
                             android:paddingTop="0dp"
-                            android:paddingRight="20dp"
+                            android:paddingEnd="20dp"
                             android:paddingBottom="0dp"
                             android:textColor="#C1C0C0"
                             android:textColorHint="@color/black"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
 
@@ -220,11 +229,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Mon compte"
-                    android:textSize="20dp" />
+                    android:text="@string/profile_account_subtitle"
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,20 +247,22 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
                         android:orientation="horizontal"
-                        android:paddingRight="10dp">
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="15dp"
-                            android:text="Modifier mon mot de passe" />
+                            android:text="@string/profile_edit_password_button" />
 
                         <ImageButton
+                            android:contentDescription="@string/none"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/ic_arrow_right"></ImageButton>
+                            android:background="@drawable/ic_arrow_right" />
                     </LinearLayout>
 
 
@@ -260,23 +271,24 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
                         android:orientation="horizontal"
-                        android:paddingRight="10dp">
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="15dp"
-                            android:text="Recevoir les notifications" />
+                            android:text="@string/profile_notifications_toggle_switch" />
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/notification_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:switchMinWidth="56dp"
-                            android:textOff="OFF"
-                            android:textOn="ON"
+                            android:textOff="@string/profile_notifications_disabled"
+                            android:textOn="@string/profile_notifications_enabled"
                             android:theme="@style/Switch" />
 
                     </LinearLayout>
@@ -286,15 +298,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="14dp"
 
-                            android:text="Supprimer mon compte"
+                            android:text="@string/profile_remove_account_button"
                             android:textColor="@color/tart_orange" />
 
 
@@ -305,15 +319,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/link_item"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="14dp"
 
-                            android:text="Se déconnecter"
+                            android:text="@string/profile_logout_button"
                             />
 
 
@@ -326,4 +342,3 @@
         </LinearLayout>
 
     </LinearLayout>
-</RelativeLayout>

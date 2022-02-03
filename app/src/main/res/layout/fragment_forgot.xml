@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    app:hintEnabled="false"
     tools:context=".LoginFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_weight="0"
         android:gravity="center"
-        android:text="Mot de passe oublié ?"
+        android:text="@string/forgot_title"
         android:textColor="@color/orange_yellow_crayola"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 
@@ -27,37 +27,40 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adresse e-mail"
+            android:text="@string/forgot_input_mail"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/orange_yellow_crayola"
-            ></TextView>
+           />
 
 
         <EditText
             android:id="@+id/mail"
+
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_input"
             android:padding="20dp"
+            android:autofillHints="emailAddress"
             android:textColorHint="@color/orange_yellow_crayola"
-            android:textSize="23dp"></EditText>
+            android:hint="@string/none"
+            android:textSize="23sp"/>
 
 
         <TextView
             android:id="@+id/send_code_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Envoyer un code"
+            android:text="@string/forgot_send_code_button"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/orange_yellow_crayola"
-            ></TextView>
+            />
 
 
 
@@ -69,39 +72,51 @@
 
             <EditText
                 android:id="@+id/first_digit"
+                android:inputType="number"
                 android:padding="20dp"
                 android:background="@drawable/primary_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="1"></EditText>
+                android:importantForAutofill="no"
+                android:hint="@string/none"
+                android:maxLength="1"/>
 
             <EditText
                 android:layout_margin="10dp"
                 android:id="@+id/second_digit"
+                android:inputType="number"
                 android:padding="20dp"
                 android:background="@drawable/primary_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="1"></EditText>
+                android:importantForAutofill="no"
+                android:hint="@string/none"
+                android:maxLength="1"/>
 
             <EditText
                 android:layout_margin="10dp"
                 android:id="@+id/third_digit"
+                android:inputType="number"
                 android:padding="20dp"
                 android:background="@drawable/primary_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="1"></EditText>
+                android:importantForAutofill="no"
+                android:hint="@string/none"
+                android:maxLength="1"/>
 
 
             <EditText
                 android:layout_margin="10dp"
                 android:id="@+id/fourth_digit"
+                android:inputType="number"
                 android:padding="20dp"
                 android:background="@drawable/primary_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="1"></EditText>
+                android:importantForAutofill="no"
+                android:hint="@string/none"
+                android:maxLength="1"/>
 
         </LinearLayout>
 
@@ -112,7 +127,8 @@
             android:layout_height="200dp"
             android:background="@drawable/round_shape"
             android:src="@drawable/ic_check"
-            app:backgroundTint="@null"></ImageButton>
+            android:contentDescription="@string/none"
+            app:backgroundTint="@null" />
         <Button
             android:id="@+id/submit_button"
             android:layout_gravity="center"
@@ -121,7 +137,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/primary_rounded_button"
             android:padding="20dp"
-            android:text="Réinitialiser" />
+            android:text="@string/forgot_reset_button" />
 
     </LinearLayout>
 </LinearLayout>

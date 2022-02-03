@@ -2,4 +2,69 @@
     <string name="app_name">inance</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="none"> </string>
+
+    <string name="login_title">Connectez-vous à votre compte</string>
+    <string name="login_input_mail">Adresse e-mail</string>
+    <string name="login_input_password">Mot de passe</string>
+    <string name="login_forgot">Mot de passe oublié ?</string>
+    <string name="login_submit">Se connecter</string>
+
+    <string name="home_title">Gardez le contrôle de votre argent</string>
+    <string name="home_login_simple_register">Créer un compte</string>
+    <string name="home_login_with_google">Continuer avec Google</string>
+    <string name="home_login_with_facebook">Continuer avec Facebook</string>
+    <string name="home_login_simple_login">Se connecter</string>
+
+    <string name="forgot_title">Mot de passe oublié ?</string>
+    <string name="forgot_input_mail">Adresse e-mail</string>
+    <string name="forgot_send_code_button">Envoyer un code</string>
+    <string name="forgot_reset_button">Réinitialiser</string>
+
+    <string name="reset_pasword_title">Réinitialiser mon mot de passe</string>
+    <string name="reset_password_new_password">Nouveau mot de passe</string>
+
+    <string name="reset_password_new_password_confirmation">Confirmation de mot de passe</string>
+    <string name="reset_password_submit">Suivant</string>
+
+    <string name="menu_home">Acceuil</string>
+    <string name="menu_stats">Statistiques</string>
+    <string name="menu_plus">Ajouter</string>
+    <string name="menu_wallet">Portefeuille</string>
+    <string name="menu_profile">Mon profil</string>
+
+    <string name="profile_title">Réglages</string>
+    <string name="profile_avatar">Avatar</string>
+    <string name="profile_me_subtitle">Mon profil</string>
+    <string name="profile_username_label">Nom de compte</string>
+    <string name="profile_fullname_label">Nom complet</string>
+    <string name="profile_mail_label">E-mail</string>
+    <string name="profile_account_subtitle">Mon compte</string>
+    <string name="profile_notifications_toggle_switch">Recevoir les notifications</string>
+    <string name="profile_edit_password_button">Modifier mon mot de passe</string>
+    <string name="profile_remove_account_button">Supprimer mon compte</string>
+    <string name="profile_logout_button">Se déconnecter</string>
+
+    <string name="profile_notifications_enabled">ON</string>
+    <string name="profile_notifications_disabled">OFF</string>
+
+    <string name="topbar_save_button">Sauvegarder</string>
+
+    <string name="register_title">Créer un nouveau compte</string>
+    <string name="register_fullname_label">Nom complet</string>
+    <string name="register_mail_label">Adresse e-mail</string>
+    <string name="register_password_label">Mot de passe</string>
+    <string name="register_password_confirmation_label">Confirmation de mot de passe</string>
+    <string name="register_submit">Suivant</string>
+
+
+    <string name="mobile_verification_title">Vérifier votre numéro de téléphone</string>
+    <string name="mobile_verification_number_phone_label">Votre numéro de téléphone</string>
+    <string name="mobile_verification_send_code">Envoyer un code</string>
+    <string name="mobile_verification_submit">Suivant</string>
+
+    <string name="welcome_title">Votre compte a été crée!</string>
+    <string name="welcome_submit">Accéder à mon compte</string>
 </resources>

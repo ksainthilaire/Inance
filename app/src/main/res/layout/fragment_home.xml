@@ -17,8 +17,8 @@
         android:textColor="@color/orange_yellow_crayola"
         android:paddingStart="72dp"
         android:paddingEnd="72dp"
-        android:text="Gardez le contrôle de votre argent"
-        android:textSize="32dp" />
+        android:text="@string/home_title"
+        android:textSize="32sp" />
 
     <LinearLayout
         android:layout_marginBottom="150dp"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Créer un compte" />
+            android:text="@string/home_login_simple_register" />
 
         <Button
             android:id="@+id/google_button"
@@ -46,7 +46,7 @@
             android:drawableLeft="@drawable/ic_google"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Continuer avec Google"
+            android:text="@string/home_login_with_google"
             android:textColor="@color/orange_yellow_crayola"
             app:backgroundTint="@null" />
 
@@ -60,7 +60,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:textColor="@color/orange_yellow_crayola"
-            android:text="Continuer avec facebook"
+            android:text="@string/home_login_with_facebook"
             android:drawableLeft="@drawable/ic_facebook"/>
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Se connecter" />
+            android:text="@string/home_login_simple_login" />
 
     </LinearLayout>
 

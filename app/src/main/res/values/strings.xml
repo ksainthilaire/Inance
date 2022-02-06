@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">inance</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="facebook_app_id">472236617954381</string>
+    <string name="facebook_client_token">4b4d3065fccec3c5b81780745a4cc530</string>
 
     <string name="none"> </string>
 

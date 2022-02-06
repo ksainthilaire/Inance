@@ -24,6 +24,11 @@ class HomeFragment : Fragment() {
             AuthHelper.loginWithGoogle()
         }
 
+        val facebookButton = rootView.findViewById<Button>(R.id.facebook_button)
+        facebookButton.setOnClickListener {
+            AuthHelper.loginWithFacebook()
+        }
+
         val registerButton = rootView.findViewById<Button>(R.id.register_button)
         registerButton.setOnClickListener {
             parentActivity.loadFragment(parentActivity.REGISTER_FRAGMENT)

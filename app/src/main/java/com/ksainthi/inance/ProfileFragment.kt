@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
@@ -71,7 +72,7 @@ class ProfileFragment : Fragment() {
             parentActivity.displayLogin()
         }
 
-        val notificationSwitch = this.rootView.findViewById<Switch>(R.id.notification_switch)
+        val notificationSwitch = this.rootView.findViewById<SwitchCompat>(R.id.notification_switch)
         notificationSwitch.setOnClickListener { }
 
         return this.rootView

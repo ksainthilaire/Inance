@@ -19,16 +19,17 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        val googleSignIn = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            AuthHelper.loginWithGoogleHandler(result)
-        }
-        AuthHelper.configureGoogleSignIn(this, googleSignIn,
-            onSuccess = {
-                startMainActivity()
-            },
-            onError = {
 
-            })
+        val googleSignIn =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                AuthHelper.loginWithGoogleHandler(result)
+            }
+        AuthHelper.initCallbacks(
+            onSuccess = { startMainActivity() },
+            onError = {}
+        )
+        AuthHelper.configureGoogleSignIn(this, googleSignIn)
+        AuthHelper.configureFacebookSignIn(this)
 
         this.loadFragment(null)
     }

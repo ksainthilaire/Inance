@@ -9,15 +9,23 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat.startActivity
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 private val CLIENT_ID =
     "133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com"
@@ -32,14 +40,19 @@ object AuthHelper {
     var googleSignInClient: GoogleSignInClient? = null
     var googleSignIn: ActivityResultLauncher<Intent>? = null
 
-    private lateinit var onSuccess: () -> Unit
-    private lateinit var onError: () -> Unit
+    private lateinit var facebookSignInHandler: () -> Unit
 
-    fun configureGoogleSignIn(activity: Activity, googleSignIn: ActivityResultLauncher<Intent>,
-        onSuccess: () -> Unit, onError: () -> Unit) {
-        this.onSuccess = onSuccess
-        this.onError   = onError
+    private lateinit var onAuthSuccess: () -> Unit
+    private lateinit var onAuthError: () -> Unit
 
+
+    fun initCallbacks(onSuccess: () -> Unit, onError: () -> Unit) {
+        onAuthSuccess = onSuccess
+        onAuthError = onError
+    }
+
+
+    fun configureGoogleSignIn(activity: Activity, googleSignIn: ActivityResultLauncher<Intent>) {
         this.googleSignInOptions =
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(CLIENT_ID)
@@ -49,6 +62,50 @@ object AuthHelper {
 
         this.googleSignIn = googleSignIn
         this.googleSignInClient = GoogleSignIn.getClient(activity, this.googleSignInOptions!!)
+
+    }
+
+
+    fun configureFacebookSignIn(activity: Activity) {
+
+
+        facebookSignInHandler = {
+            val callbackManager = CallbackManager.Factory.create()
+
+            LoginManager.getInstance()
+                .logInWithReadPermissions(activity, Arrays.asList("public_profile", "email"))
+            Log.d("TAG", "Hello world")
+            LoginManager.getInstance().registerCallback(callbackManager,
+                object : FacebookCallback<LoginResult> {
+
+                    override fun onSuccess(loginResult: LoginResult) {
+                        val token = loginResult.accessToken.token
+
+                        Log.d("TAG", "Succès")
+                        Log.d("TAG", "Succés".plus(token))
+                        val credential = FacebookAuthProvider.getCredential(token)
+                        firebaseAuth.signInWithCredential(credential)
+                            .addOnCompleteListener(activity) { task ->
+                                if (task.isSuccessful) {
+                                    onAuthSuccess()
+                                } else {
+                                    onAuthError()
+                                }
+                            }
+                    }
+
+                    override fun onCancel() {
+                        Log.d("TAG", "Succèswtf")
+
+                    }
+
+                    override fun onError(error: FacebookException) {
+                        Log.d("TAG", "error")
+                        onAuthError()
+                    }
+
+                })
+        }
 
     }
 
@@ -85,7 +142,7 @@ object AuthHelper {
             .addOnCompleteListener { authResult ->
                 if (authResult.isSuccessful()) {
                     Log.d("LOGLOG", "onSuccess()")
-                    this.onSuccess()
+                    this.onAuthSuccess()
                 } else {
                     Log.d("LOGLOG", "ErrorAuth()")
                     // Erreur d'authentification
@@ -98,7 +155,7 @@ object AuthHelper {
             .addOnCompleteListener { authResult ->
                 if (authResult.isSuccessful()) {
                     val user = this.firebaseAuth.currentUser
-                    this.onSuccess()
+                    this.onAuthError()
                 } else {
 
                 }
@@ -127,7 +184,7 @@ object AuthHelper {
                         if (authResult.additionalUserInfo!!.isNewUser) {
                             Log.d("Firebase", "Nouvel utilisateur")
                         }
-                        this.onSuccess()
+                        this.onAuthSuccess()
                     }
                     .addOnFailureListener { e ->
                         Log.d("Firebase", "Logs  ${e.message}")
@@ -135,6 +192,10 @@ object AuthHelper {
 
             }
         }
+    }
+
+    fun loginWithFacebook() {
+        facebookSignInHandler()
     }
 
 }

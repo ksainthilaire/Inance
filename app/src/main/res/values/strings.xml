@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">inance</string>
 
+    <string name="google_client_id">133201850085-bl4gk067qv4cfs73m4avjlbj7hanoe80.apps.googleusercontent.com</string>
+
     <string name="facebook_app_id">472236617954381</string>
     <string name="facebook_client_token">4b4d3065fccec3c5b81780745a4cc530</string>
 
@@ -11,6 +13,24 @@
     <string name="login_input_password">Mot de passe</string>
     <string name="login_forgot">Mot de passe oublié ?</string>
     <string name="login_submit">Se connecter</string>
+
+
+    <string name="info_register_verification_code_sent">Vous allez recevoir un code de validation</string>
+
+
+    <string name="error_unknown">Une erreur est survenue veuillez réessayer ultérieurement</string>
+
+    <string name="error_login_failed">Adresse e-mail ou mot de passe incorrect</string>
+    <string name="error_login_incorrect_reset_code">Le code est incorrect</string>
+
+    <string name="error_register_number_invalid">Le numéro de téléphone saisi est incorrect</string>
+    <string name="error_register_mail_already_taken">L\'adresse e-mail est déjà associé à un utilisateur</string>
+    <string name="error_register_mail_invalid">L\'adresse e-mail n\'est pas valide!</string>
+    <string name="error_register_password_different">Les mots de passe saisis ne correspondent pas</string>
+    <string name="error_register_password_length">Le mot de passe doit contenir au moins 8 caractères</string>
+    <string name="error_register_empty">Veuillez remplir tous les champs</string>
+    <string name="error_register_incorrect_verification_code">Le code est incorrect</string>
+
 
     <string name="home_title">Gardez le contrôle de votre argent</string>
     <string name="home_login_simple_register">Créer un compte</string>
@@ -67,4 +87,6 @@
 
     <string name="welcome_title">Votre compte a été crée!</string>
     <string name="welcome_submit">Accéder à mon compte</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

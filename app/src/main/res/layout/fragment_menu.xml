@@ -7,7 +7,7 @@
     android:background="@android:color/transparent"
     android:orientation="vertical"
 
-    tools:context=".MenuFragment">
+    tools:context=".presentation.fragments.MenuFragment">
 
 
 

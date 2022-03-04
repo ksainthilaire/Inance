@@ -1,0 +1,135 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".presentation.fragments.FragmentRegisterStepTwo"
+        tools:ignore="Autofill">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/mobile_verification_title"
+            android:textColor="@color/orange_yellow_crayola"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:text="@string/mobile_verification_number_phone_label"
+                android:textColor="@color/orange_yellow_crayola"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/number_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/primary_input"
+                android:hint="@string/none"
+                android:inputType="phone"
+                android:padding="15dp"
+                android:textColorHint="@color/orange_yellow_crayola"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/send_code_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:text="@string/mobile_verification_send_code"
+                android:textColor="@color/orange_yellow_crayola"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/first_digit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/primary_input"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="20dp" />
+
+                <EditText
+                    android:id="@+id/second_digit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/primary_input"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="20dp" />
+
+                <EditText
+                    android:id="@+id/third_digit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/primary_input"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="20dp" />
+
+
+                <EditText
+                    android:id="@+id/fourth_digit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/primary_input"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="20dp" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_shape"
+                android:contentDescription="@string/none"
+                android:src="@drawable/ic_check"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/primary_rounded_button"
+                android:padding="20dp"
+                android:text="@string/mobile_verification_submit" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

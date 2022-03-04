@@ -1,79 +1,99 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_weight="0"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/orange_yellow_crayola"
-        android:paddingStart="72dp"
-        android:paddingEnd="72dp"
-        android:text="@string/home_title"
-        android:textSize="32sp" />
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:layout_marginBottom="150dp"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
 
-        <Button
-            android:id="@+id/register_button"
-            android:background="@drawable/primary_rounded_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/home_login_simple_register" />
+        android:orientation="vertical"
+        tools:context=".presentation.MainActivity">
 
-        <Button
-            android:id="@+id/google_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/primary_borded_button"
-            android:drawableLeft="@drawable/ic_google"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/home_login_with_google"
-            android:textColor="@color/orange_yellow_crayola"
-            app:backgroundTint="@null" />
-
-        <Button
-            app:backgroundTint="@null"
-            android:layout_marginTop="20dp"
-            android:id="@+id/facebook_button"
-            android:background="@drawable/primary_borded_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textColor="@color/orange_yellow_crayola"
-            android:text="@string/home_login_with_facebook"
-            android:drawableLeft="@drawable/ic_facebook"/>
 
         <TextView
-            android:id="@+id/login_button"
-            android:textStyle="bold"
-            android:textColor="@color/orange_yellow_crayola"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/home_login_simple_login" />
+            android:paddingStart="72dp"
+            android:paddingEnd="72dp"
+            android:text="@string/home_title"
+            android:textColor="@color/orange_yellow_crayola"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/alert"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/alertText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/primary_rounded_button"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/home_login_simple_register" />
+
+            <Button
+                android:id="@+id/google_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/primary_borded_button"
+                android:drawableLeft="@drawable/ic_google"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/home_login_with_google"
+                android:textColor="@color/orange_yellow_crayola"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/facebook_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/primary_borded_button"
+                android:drawableLeft="@drawable/ic_facebook"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/home_login_with_facebook"
+                android:textColor="@color/orange_yellow_crayola"
+                app:backgroundTint="@null" />
+
+            <TextView
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/home_login_simple_login"
+                android:textColor="@color/orange_yellow_crayola"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
+</layout>

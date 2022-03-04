@@ -40,20 +40,20 @@ sealed class RegisterPartialState {
         const val isVerifiedPhoneNumber: Boolean = true
     }
 
-    open class RegisterError(open val reason: String) : RegisterPartialState() {
+    abstract class RegisterError(reason: String) : RegisterPartialState() {
         val isLoadingEnabled: Boolean = false
         val alert: Alert = Alert.Error(reason)
     }
 
-    open class RegisterInfo(open val info: String) : RegisterPartialState() {
+    abstract class RegisterInfo(info: String) : RegisterPartialState() {
         val isLoadingEnabled: Boolean = false
         val alert: Alert = Alert.Info(info)
     }
 
-    data class RegisterStepOneError(override val reason: String) : RegisterError(reason)
-    data class RegisterStepTwoError(override val reason: String) : RegisterError(reason)
+    data class RegisterStepOneError(val reason: String) : RegisterError(reason)
+    data class RegisterStepTwoError(val reason: String) : RegisterError(reason)
 
-    data class RegisterStepOneInfo(override val info: String) : RegisterInfo(info)
+    data class RegisterStepOneInfo(val info: String) : RegisterInfo(info)
 }
 
 sealed class RegisterIntent {

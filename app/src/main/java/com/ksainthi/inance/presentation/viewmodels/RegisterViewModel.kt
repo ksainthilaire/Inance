@@ -11,6 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
+import java.lang.IllegalStateException
 import kotlin.coroutines.CoroutineContext
 
 class RegisterViewModel : ViewModel(), CoroutineScope {
@@ -39,13 +40,19 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
 
             is RegisterPartialState.RegisterStepOneSuccessful -> state.copy(
                 isLoadingEnabled = partialState.isLoadingEnabled,
-                registerForm = partialState.registerForm
+                registerForm = partialState.registerForm,
+                step = partialState.step
             )
 
             is RegisterPartialState.RegisterStepTwoSuccessful -> state.copy(
                 step = partialState.step,
                 isVerifiedPhoneNumber = partialState.isVerifiedPhoneNumber,
                 registerForm = state.registerForm
+            )
+
+            is RegisterPartialState.RegisterStepTwoError -> state.copy(
+                isLoadingEnabled = partialState.isLoadingEnabled,
+                alert = partialState.alert
             )
 
             is RegisterPartialState.RegisterError -> state.copy(
@@ -62,7 +69,7 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
                 registerForm = state.registerForm
             )
 
-            else -> throw AssertionError()
+            else -> throw IllegalStateException("Invalid state")
 
         }
     }

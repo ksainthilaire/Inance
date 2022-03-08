@@ -1,9 +1,12 @@
 package com.ksainthi.inance.presentation.viewmodels
 
 import android.content.res.Resources
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ksainthi.inance.R
+import com.ksainthi.inance.components.AlertDesc
+import com.ksainthi.inance.components.AlertType
 import com.ksainthi.inance.presentation.model.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +25,7 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
     val state = MutableLiveData<RegisterState>()
 
     init {
+        state.value = RegisterState()
         launch(Dispatchers.Main) {
             for (partialState in channel) {
                 val newState = reduce(state.value!!, partialState)
@@ -40,34 +44,26 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
 
             is RegisterPartialState.RegisterStepOneSuccessful -> state.copy(
                 isLoadingEnabled = partialState.isLoadingEnabled,
-                registerForm = partialState.registerForm,
+                fullName = partialState.fullName,
+                mail = partialState.mail,
+                password = partialState.password,
+                rePassword = partialState.rePassword,
+
                 step = partialState.step
             )
 
-            is RegisterPartialState.RegisterStepTwoSuccessful -> state.copy(
-                step = partialState.step,
-                isVerifiedPhoneNumber = partialState.isVerifiedPhoneNumber,
-                registerForm = state.registerForm
+            is RegisterPartialState.RegisterFieldUpdates -> state.copy(
+                fullName = partialState.fullName,
+                mail = partialState.mail,
+                password = partialState.password,
+                rePassword = partialState.rePassword
             )
 
-            is RegisterPartialState.RegisterStepTwoError -> state.copy(
-                isLoadingEnabled = partialState.isLoadingEnabled,
-                alert = partialState.alert
-            )
-
-            is RegisterPartialState.RegisterError -> state.copy(
+            is RegisterPartialState.RegisterAlert -> state.copy (
                 isLoadingEnabled = partialState.isLoadingEnabled,
                 alert = partialState.alert,
-                step = state.step,
-                registerForm = state.registerForm
             )
 
-            is RegisterPartialState.RegisterStepOneInfo -> state.copy(
-                isLoadingEnabled = partialState.isLoadingEnabled,
-                alert = partialState.alert,
-                step = state.step,
-                registerForm = state.registerForm
-            )
 
             else -> throw IllegalStateException("Invalid state")
 
@@ -82,7 +78,7 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
         return when (intent) {
             is RegisterIntent.Register -> RegisterAction.Register(
                 intent.fullName, intent.mail,
-                intent.password, intent.passwordConfirmation
+                intent.password, intent.rePassword
             )
             is RegisterIntent.RequestConfirmPhone -> RegisterAction.RequestConfirmPhone(intent.number)
             is RegisterIntent.ConfirmPhoneWithCode -> RegisterAction.ConfirmPhoneWithCode(intent.code)
@@ -93,68 +89,76 @@ class RegisterViewModel : ViewModel(), CoroutineScope {
         launch {
             when (action) {
                 is RegisterAction.Register -> {
-                    if (android.util.Patterns.EMAIL_ADDRESS.matcher(action.mail).matches()) {
+
+                    Log.d("TAG", "RegisterAction.Register()")
+
+                    val mail = Field(action.mail)
+                    val password = Field(action.password)
+                    val rePassword = Field(action.rePassword)
+                    val fullName = Field(action.fullName)
+
+                    if (android.util.Patterns.EMAIL_ADDRESS.matcher(mail.value).matches()) {
+                        mail.isError = true
                         channel.send(
-                            RegisterPartialState.RegisterStepOneError(resources.getString(R.string.error_register_mail_invalid))
+
+                            RegisterPartialState.RegisterFieldUpdates(
+                                fullName,
+                                mail,
+                                password,
+                                rePassword
+                            )
                         )
+
+
+                        val alert = AlertDesc(
+                            AlertType.ERROR,
+                            resources.getString(R.string.error_register_mail_invalid)
+                        )
+
+                        channel.send(RegisterPartialState.RegisterAlert(alert))
                         return@launch
                     }
 
-                    if (action.password != action.passwordConfirmation) {
+                    if (password.value != rePassword.value) {
+                        password.isError = true
+                        rePassword.isError = true
                         channel.send(
-                            RegisterPartialState.RegisterStepOneError(resources.getString(R.string.error_register_password_different))
+                            RegisterPartialState.RegisterFieldUpdates(
+                                mail,
+                                password,
+                                rePassword,
+                                fullName
+                            )
                         )
+
+                        val alert = AlertDesc(
+                            AlertType.ERROR,
+                            resources.getString(R.string.error_register_password_different)
+                        )
+
+
+                        channel.send(
+                            RegisterPartialState.RegisterAlert(alert)
+                        )
+
                         return@launch
                     }
 
-                    /*
-                        TODO: Vérifier si l'adresse e-mail soumise n'est pas enregistré dans la base de donnée
-
-
-                    if () {
-                        channel.send(
-                            RegisterPartialState.RegisterStepOneError(resources.getString(R.string.error_register_mail_already_taken))
+                   channel.send(
+                        RegisterPartialState.RegisterStepOneSuccessful(
+                            mail = Field(action.mail),
+                            fullName = Field(action.fullName),
+                            password = Field(action.password),
+                            rePassword = Field(action.rePassword)
                         )
-                        return@launch
-                    }
-                    */
-
-
-                    val form = RegisterForm(action.fullName, action.password, action.mail)
-                    channel.send(
-                        RegisterPartialState.RegisterStepOneSuccessful(form)
                     )
                 }
                 is RegisterAction.RequestConfirmPhone -> {
+                    val phoneNumber = Field(action.number)
 
-                    val form = state.value?.registerForm
-                    form?.let {
-                        form.number = action.number
-
-                        /*
-                        TODO: Vérifier si le numéro de téléphone est valide
-
-
-
-                        channel.send(
-                            RegisterPartialState.RegisterStepTwoError(resources.getString(R.string.error_register_number_invalid))
-                        )
-                        */
-
-                        channel.send(
-                            RegisterPartialState.RegisterStepOneInfo(resources.getString(R.string.info_register_verification_code_sent))
-                        )
-
-                    }
 
                 }
                 is RegisterAction.ConfirmPhoneWithCode -> {
-
-                    /*
-                        TODO: Vérifier le code
-                    channel.send(
-                        RegisterPartialState.RegisterStepTwoError(resources.getString(R.string.error_register_incorrect_verification_code))
-                    )*/
 
                     channel.send(
                         RegisterPartialState.RegisterStepTwoSuccessful

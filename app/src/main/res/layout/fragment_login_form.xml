@@ -12,15 +12,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
             android:layout_weight="0"
             android:gravity="center"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
 
             android:text="@string/login_title"
             android:textColor="@color/orange_yellow_crayola"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+
+        <com.ksainthi.inance.components.Alert
+            android:id="@+id/alert"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_width="300dp">
+        </com.ksainthi.inance.components.Alert>
+
 
         <LinearLayout
             android:layout_width="match_parent"

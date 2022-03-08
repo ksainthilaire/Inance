@@ -37,9 +37,7 @@ class ProfileViewModel : ViewModel(), CoroutineScope {
                 step = state.step
             )
 
-            is ProfilePartialState.ProfileUpdateSuccessful -> state.copy(
-                step = partialState.step
-            )
+
 
             is ProfilePartialState.ProfileUpdateFailed -> state.copy(
                 alert = partialState.alert,

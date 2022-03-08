@@ -19,6 +19,15 @@
             android:textStyle="bold" />
 
 
+        <com.ksainthi.inance.components.Alert
+            android:id="@+id/alert"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+        </com.ksainthi.inance.components.Alert>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,19 +58,6 @@
                 android:textSize="20sp" />
 
 
-            <TextView
-                android:id="@+id/send_code_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:gravity="center"
-                android:text="@string/forgot_send_code_button"
-                android:textColor="@color/orange_yellow_crayola"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-
             <LinearLayout
                 android:layout_width="match_parent"
 
@@ -69,71 +65,7 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp">
-
-                <EditText
-                    android:id="@+id/first_digit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/primary_input"
-                    android:hint="@string/none"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:padding="20dp" />
-
-                <EditText
-                    android:id="@+id/second_digit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/primary_input"
-                    android:hint="@string/none"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:padding="20dp" />
-
-                <EditText
-                    android:id="@+id/third_digit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/primary_input"
-                    android:hint="@string/none"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:padding="20dp" />
-
-
-                <EditText
-                    android:id="@+id/fourth_digit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/primary_input"
-                    android:hint="@string/none"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:padding="20dp" />
-
-            </LinearLayout>
-
-            <ImageButton
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/round_shape"
-                android:contentDescription="@string/none"
-                android:src="@drawable/ic_check"
-                app:backgroundTint="@null" />
+                android:paddingEnd="20dp"/>
 
             <Button
                 android:id="@+id/submit_button"

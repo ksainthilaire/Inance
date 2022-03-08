@@ -1,5 +1,9 @@
 package com.ksainthi.inance.presentation.model
 
+import com.ksainthi.inance.components.AlertDesc
+import com.ksainthi.inance.components.AlertType
+
+
 enum class ProfileError {
     INCORRECT_CREDENTIALS,
     INCORRECT_EMAIL_ADDRESS
@@ -12,7 +16,7 @@ enum class ProfileStep {
 
 data class ProfileState(
     val isLoadingEnabled: Boolean = false,
-    val alert: Alert?,
+    val alert: AlertDesc?,
     val step: ProfileStep = ProfileStep.GENERAL
 )
 
@@ -23,23 +27,23 @@ sealed class ProfilePartialState {
     }
 
    data class ProfileUpdateSuccessful(val info: String) : ProfilePartialState() {
-        val alert: Alert = Alert.Info(info)
+        val alert: AlertDesc = AlertDesc(AlertType.INFO, info)
         val step: ProfileStep = ProfileStep.GENERAL
     }
 
     data class PasswordUpdateSuccessful(val info: String) : ProfilePartialState() {
         val isLoadingEnabled: Boolean = false
         val step: ProfileStep = ProfileStep.EDIT_PASSWORD_FORM
-        val alert: Alert = Alert.Info(info)
+        val alert: AlertDesc = AlertDesc(AlertType.SUCCESS, info)
     }
 
     data class PasswordUpdateFailed(val reason: String) : ProfilePartialState() {
         val step: ProfileStep = ProfileStep.EDIT_PASSWORD_FORM
-        val alert: Alert = Alert.Error(reason)
+        val alert: AlertDesc = AlertDesc(AlertType.ERROR, reason)
     }
 
     data class ProfileUpdateFailed(val reason: String) : ProfilePartialState() {
-        val alert: Alert = Alert.Error(reason)
+        val alert: AlertDesc = AlertDesc(AlertType.ERROR, reason)
     }
 }
 

@@ -1,6 +1,7 @@
 package com.ksainthi.inance.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ksainthi.inance.R
+import com.ksainthi.inance.components.AlertDesc
 import com.ksainthi.inance.databinding.FragmentRegisterStepTwoBinding
 import com.ksainthi.inance.presentation.viewmodels.RegisterViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +34,7 @@ class FragmentRegisterStepTwo : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register_step_two, container, false)
 
         initView()
+        initViewModel()
 
         return binding.root
     }
@@ -40,25 +43,21 @@ class FragmentRegisterStepTwo : Fragment() {
         with (binding) {
 
             sendCodeButton.setOnClickListener {
-                val number = binding.numberPhone.text.toString()
+                val number = binding.numberPhone.getValue()
+                Log.d("TAG", "Le numéro de téléphone est ${number}")
             }
 
             submitButton.setOnClickListener {
-                val digits = getDigits()
+                val code = binding.code.getValue()
+                Log.d("TAG", "Le code est ${code}")
             }
         }
     }
-
-    private fun concatenate(vararg string: String?): String {
-        return string.joinToString("")
+    fun initViewModel() {
+        registerViewModel.state.observe(viewLifecycleOwner) {
+            it.alert?.let { state  : AlertDesc -> binding.alert.showMessage(state.text, state.type) }
+        }
     }
 
-    private fun getDigits(): String {
-        val firstDigit = binding.firstDigit.text.toString()
-        val secondDigit = binding.secondDigit.text.toString()
-        val thirdDigit = binding.thirdDigit.text.toString()
-        val fourthDigit = binding.fourthDigit.text.toString()
 
-        return this.concatenate(firstDigit, secondDigit, thirdDigit, fourthDigit)
-    }
 }

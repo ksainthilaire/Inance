@@ -3,6 +3,8 @@ package com.ksainthi.inance.presentation.viewmodels
 import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ksainthi.inance.components.AlertDesc
+import com.ksainthi.inance.components.AlertType
 import com.ksainthi.inance.presentation.model.HomeAction
 import com.ksainthi.inance.presentation.model.HomeIntent
 import com.ksainthi.inance.presentation.model.HomePartialState
@@ -41,16 +43,13 @@ class HomeViewModel : ViewModel(), CoroutineScope {
             )
 
             is HomePartialState.Successful -> state.copy(
-                alert = partialState.alert,
                 step = partialState.step
             )
 
-            is HomePartialState.Failed -> state.copy(
+            is HomePartialState.HomeAlert -> state.copy(
                 alert = partialState.alert,
             )
 
-
-            else -> throw AssertionError()
 
         }
     }
@@ -70,11 +69,14 @@ class HomeViewModel : ViewModel(), CoroutineScope {
         launch {
             return@launch when (action) {
                 is HomeAction.SignInWithGoogle -> {
-                    channel.send(HomePartialState.Failed("Connexion refusé!"))
+
+                    val alert = AlertDesc(AlertType.ERROR, "Connexion refusé")
+                    channel.send(HomePartialState.HomeAlert(alert))
                 }
                 is HomeAction.SignInWithFacebook -> {
 
-                    channel.send(HomePartialState.Successful("Authentifié avec succès!"))
+                    val alert = AlertDesc(AlertType.SUCCESS, "Connexion réussie!")
+                    channel.send(HomePartialState.HomeAlert(alert))
                 }
             }
         }

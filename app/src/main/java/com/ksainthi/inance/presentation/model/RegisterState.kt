@@ -1,5 +1,8 @@
 package com.ksainthi.inance.presentation.model
 
+import com.ksainthi.inance.components.AlertDesc
+
+
 enum class RegisterStep {
     REGISTER_STEP_ONE,
     REGISTER_STEP_TWO,
@@ -8,16 +11,25 @@ enum class RegisterStep {
 
 data class RegisterForm(
     val fullName: String,
-    val password: String,
     val mail: String,
+    val password: String,
     var number: String? = null
 )
 
+data class Field(
+    val value: String = "",
+    var isError: Boolean = false
+)
+
 data class RegisterState(
-    val alert: Alert?,
+    val alert: AlertDesc? = null,
     val step: RegisterStep = RegisterStep.REGISTER_STEP_ONE,
 
-    val registerForm: RegisterForm? = null,
+    val mail: Field = Field(),
+    val password: Field = Field(),
+    val rePassword: Field = Field(),
+    val fullName: Field = Field(),
+    val phoneNumber: Field = Field(),
 
     val isLoadingEnabled: Boolean = false,
     val isVerifiedPhoneNumber: Boolean = false
@@ -30,9 +42,27 @@ sealed class RegisterPartialState {
     }
 
 
-    data class RegisterStepOneSuccessful(val registerForm: RegisterForm) : RegisterPartialState() {
+    data class RegisterStepOneSuccessful(
+        val fullName: Field,
+        val mail: Field,
+        val password: Field,
+        val rePassword: Field
+    ) : RegisterPartialState() {
         val isLoadingEnabled: Boolean = false
         val step: RegisterStep = RegisterStep.REGISTER_STEP_TWO
+    }
+
+    data class RegisterFieldUpdates(
+        val fullName: Field,
+        val mail: Field,
+        val password: Field,
+        val rePassword: Field
+    ) : RegisterPartialState()
+
+    data class RegisterAlert(
+        val alert: AlertDesc
+    ) : RegisterPartialState() {
+        val isLoadingEnabled: Boolean = false
     }
 
     object RegisterStepTwoSuccessful : RegisterPartialState() {
@@ -40,20 +70,7 @@ sealed class RegisterPartialState {
         const val isVerifiedPhoneNumber: Boolean = true
     }
 
-    abstract class RegisterError(reason: String) : RegisterPartialState() {
-        val isLoadingEnabled: Boolean = false
-        val alert: Alert = Alert.Error(reason)
-    }
 
-    abstract class RegisterInfo(info: String) : RegisterPartialState() {
-        val isLoadingEnabled: Boolean = false
-        val alert: Alert = Alert.Info(info)
-    }
-
-    data class RegisterStepOneError(val reason: String) : RegisterError(reason)
-    data class RegisterStepTwoError(val reason: String) : RegisterError(reason)
-
-    data class RegisterStepOneInfo(val info: String) : RegisterInfo(info)
 }
 
 sealed class RegisterIntent {
@@ -63,7 +80,7 @@ sealed class RegisterIntent {
         val fullName: String,
         val mail: String,
         val password: String,
-        val passwordConfirmation: String
+        val rePassword: String
     ) : RegisterIntent()
 }
 
@@ -72,7 +89,7 @@ sealed class RegisterAction {
         val fullName: String,
         val mail: String,
         val password: String,
-        val passwordConfirmation: String
+        val rePassword: String
     ) : RegisterAction()
 
     data class RequestConfirmPhone(val number: String) : RegisterAction()

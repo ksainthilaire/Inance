@@ -10,21 +10,37 @@
         android:name="com.ksainthi.inance.presentation.fragments.FragmentHome"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
+
         <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_homeFragment_to_fragmentRegisterStepOne"
+            app:destination="@id/fragmentRegisterStepOne" />
         <action
-            android:id="@+id/action_homeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            android:id="@+id/action_homeFragment_to_fragmentLoginForm"
+            app:destination="@id/fragmentLoginForm" />
+
     </fragment>
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.ksainthi.inance.presentation.fragments.FragmentLogin"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/fragmentRegisterStepOne"
+        android:name="com.ksainthi.inance.presentation.fragments.FragmentRegisterStepOne"
+        android:label="FragmentRegisterStepOne" >
+        <action
+            android:id="@+id/action_fragmentRegisterStepOne_to_fragmentRegisterStepTwo"
+            app:destination="@id/fragmentRegisterStepTwo" />
+    </fragment>
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.ksainthi.inance.presentation.fragments.FragmentRegister"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        android:id="@+id/fragmentRegisterStepTwo"
+        android:name="com.ksainthi.inance.presentation.fragments.FragmentRegisterStepTwo"
+        android:label="FragmentRegisterStepTwo" />
+    <fragment
+        android:id="@+id/fragmentLoginForm"
+        android:name="com.ksainthi.inance.presentation.fragments.FragmentLoginForm"
+        android:label="FragmentLoginForm" >
+        <action
+            android:id="@+id/action_fragmentLoginForm_to_fragmentLoginForgotForm2"
+            app:destination="@id/fragmentLoginForgotForm2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLoginForgotForm2"
+        android:name="com.ksainthi.inance.presentation.fragments.FragmentLoginForgotForm"
+        android:label="FragmentLoginForgotForm" />
 </navigation>

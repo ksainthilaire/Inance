@@ -1,9 +1,8 @@
 package com.ksainthi.inance.presentation.model
 
 
-enum class HomeError {
+import com.ksainthi.inance.components.AlertDesc
 
-}
 
 enum class HomeStep {
     SUCCESSFUL_IDENTIFICATION
@@ -11,7 +10,7 @@ enum class HomeStep {
 
 data class HomeState(
     val isLoadingEnabled: Boolean = false,
-    val alert: Alert? = null,
+    val alert: AlertDesc? = null,
     val step: HomeStep? = null
 )
 
@@ -21,16 +20,11 @@ sealed class HomePartialState {
         const val isLoadingEnabled: Boolean = true
     }
 
+    data class HomeAlert(val alert: AlertDesc) : HomePartialState()
+
     data class Successful(val reason: String) : HomePartialState() {
         val step = HomeStep.SUCCESSFUL_IDENTIFICATION
-        val alert = Alert.Success(reason)
     }
-
-    data class Failed(val reason: String) : HomePartialState() {
-        val alert = Alert.Error(reason)
-    }
-
-
 }
 
 sealed class HomeIntent {

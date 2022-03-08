@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.ksainthi.inance.R
 import com.ksainthi.inance.presentation.MainActivity
 import com.ksainthi.inance.presentation.fragments.FragmentHome
-import com.ksainthi.inance.presentation.fragments.FragmentLogin
 import com.ksainthi.inance.presentation.fragments.FragmentRegisterStepOne
 import com.ksainthi.inance.presentation.fragments.FragmentRegisterStepFour
 
@@ -36,37 +34,13 @@ class AuthActivity : AppCompatActivity() {
         AuthHelper.configureGoogleSignIn(this, googleSignIn)
         AuthHelper.configureFacebookSignIn(this)
 
-        this.loadFragment(null)
+
     }
 
     override fun onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
             getSupportFragmentManager().popBackStack()
         }
-    }
-
-    fun loadFragment(fragmentId: Int?) {
-        var fragment: Fragment = FragmentHome()
-
-        when (fragmentId) {
-            HOME_FRAGMENT -> {
-                fragment = FragmentHome()
-            }
-            LOGIN_FRAGMENT -> {
-                fragment = FragmentLogin()
-            }
-            REGISTER_FRAGMENT -> {
-                fragment = FragmentRegisterStepOne()
-            }
-            WELCOME_FRAGMENT -> {
-                fragment = FragmentRegisterStepFour()
-            }
-        }
-
-        val transaction = supportFragmentManager.beginTransaction()
-
-        transaction.addToBackStack(null)
-        transaction.commit()
     }
 
     fun startMainActivity() {
